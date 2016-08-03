@@ -11,6 +11,7 @@ $Mautic_Form_ID_Ref = "ID Form Reembolso";
 // Insira as informações vinda do Hotmart
 $HotmartToken = "TOKEN HOTMART";
 $HotmartIdProd = "ID Produto Hotmart";
+$HotmartIdProdTest = "1439";//1439 é o ID do produto usado para teste de API pelo Hotmart
 
 // Informações recebidas via post do Hotmart
 $HotmartName = $_POST['first_name'];
@@ -23,7 +24,7 @@ foreach ($_POST as $key => $value){
     $$key = $value;
 }
 //Validação das informações e tomada da ação para cada status recebido
-if ($HotmartHottok != 0 && $HotmartHottok != null && $_POST && $HotmartHottok == $HotmartToken && $HotmartProd == $HotmartIdProd) {
+if ($HotmartHottok != 0 && $HotmartHottok != null && $_POST && $HotmartHottok == $HotmartToken && ($HotmartProd == $HotmartIdProd || $HotmartProd == $HotmartIdProdTest)) {
     switch ($HotmartStatus) {
         case 'started':
             Submit_Form_Mautic_Hotmart_Buy();
